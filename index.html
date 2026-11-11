@@ -5,44 +5,71 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Great Christmas Cookie Bake Off</title>
 <style>
-  :root{--red:#c0283a;--green:#1f6b45;--cream:#fff7e6;--brown:#8a5a2b;--gold:#e8b23a}
+  :root{--red:#9f342c;--green:#173f32;--green-deep:#102f26;--cream:#f4ead3;--paper:#fbf4e4;--brown:#78472d;--gold:#c8a15a;--ink:#30251d}
   *{box-sizing:border-box}
-  body{margin:0;font-family:Georgia,"Times New Roman",serif;color:#3b2a1a;background:var(--cream);overflow-x:hidden}
+  body{margin:0;font-family:Georgia,"Times New Roman",serif;color:var(--ink);background-color:var(--green);background-image:radial-gradient(ellipse at 50% 12%,rgba(201,161,90,.12),transparent 48%),repeating-linear-gradient(135deg,rgba(255,255,255,.018) 0 1px,transparent 1px 5px);overflow-x:hidden}
   .snow{position:fixed;inset:0;pointer-events:none;z-index:5}
   .flake{position:absolute;top:-20px;color:#fff;text-shadow:0 0 4px #8ab;animation:fall linear infinite}
   @keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
-  header{background:repeating-linear-gradient(45deg,var(--red) 0 20px,#a81f30 20px 40px);color:#fff;text-align:center;padding:50px 16px 30px;border-bottom:8px solid var(--gold)}
-  header .small{letter-spacing:.3em;text-transform:uppercase;font-size:.95rem}
-  h1{font-size:clamp(2rem,7vw,4.5rem);margin:.2em 0;text-shadow:3px 3px 0 var(--green)}
-  header p{font-size:1.2rem;margin:.3em}
-  .dancers{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin-top:20px}
-  .gm{width:70px;height:90px;animation:dance .8s ease-in-out infinite alternate;transform-origin:50% 100%}
+  header{position:relative;background:linear-gradient(145deg,var(--green-deep),var(--green) 65%,#214d3d);color:var(--paper);text-align:center;padding:52px 16px 32px;border-bottom:2px solid var(--gold);box-shadow:inset 0 -7px 0 rgba(16,47,38,.45)}
+  header:before,header:after{content:"";position:absolute;left:5%;right:5%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+  header:before{top:14px}header:after{bottom:11px}
+  header .small{letter-spacing:.26em;text-transform:uppercase;font-size:.82rem;color:#e5c889}
+  h1{font-size:clamp(2rem,7vw,4.35rem);line-height:1.04;margin:.3em auto;max-width:950px;color:#f8edcf;text-shadow:2px 3px 0 #09251d}
+  header p{font-size:1.15rem;margin:.6em;color:#e8ddc4}
+  .dancers{display:flex;justify-content:center;align-items:flex-end;flex-wrap:wrap;gap:8px;margin:24px auto 4px;max-width:680px}
+  .gm{width:88px;height:110px;overflow:visible;filter:drop-shadow(0 3px 2px rgba(8,27,21,.35));animation:dance .9s ease-in-out infinite alternate;transform-origin:50% 100%}
   .gm:nth-child(even){animation-delay:.4s;animation-direction:alternate-reverse}
-  .gm:nth-child(3n){animation-duration:.6s}
-  @keyframes dance{0%{transform:rotate(-12deg) translateY(0)}50%{transform:rotate(0) translateY(-14px)}100%{transform:rotate(12deg) translateY(0)}}
-  .gm .arm-l{transform-origin:20px 38px;animation:wl .4s ease-in-out infinite alternate}
-  .gm .arm-r{transform-origin:60px 38px;animation:wr .4s ease-in-out infinite alternate}
-  @keyframes wl{to{transform:rotate(-35deg)}}
-  @keyframes wr{to{transform:rotate(35deg)}}
-  main{max-width:900px;margin:auto;padding:30px 16px}
-  section{background:#fff;border:3px dashed var(--green);border-radius:18px;padding:24px;margin:28px 0;box-shadow:0 6px 0 rgba(0,0,0,.08)}
-  h2{color:var(--red);font-size:2rem;margin-top:0;text-align:center}
+  .gm:nth-child(3n){animation-duration:1.1s}
+  @keyframes dance{0%{transform:rotate(-7deg) translateY(0)}50%{transform:rotate(0) translateY(-9px)}100%{transform:rotate(7deg) translateY(0)}}
+  .gm .arm-l{transform-origin:30px 57px;animation:wl .55s ease-in-out infinite alternate}
+  .gm .arm-r{transform-origin:70px 57px;animation:wr .55s ease-in-out infinite alternate}
+  @keyframes wl{to{transform:rotate(-16deg)}}
+  @keyframes wr{to{transform:rotate(16deg)}}
+  main{max-width:940px;margin:auto;padding:34px 16px}
+  section{position:relative;background:var(--paper);border:1px solid var(--gold);border-radius:4px;padding:28px;margin:28px 0;box-shadow:0 8px 22px rgba(5,25,19,.22),inset 0 0 0 5px rgba(200,161,90,.12)}
+  section:before{content:"";position:absolute;inset:8px;border:1px solid rgba(200,161,90,.46);pointer-events:none}
+  h2{color:var(--red);font-size:clamp(1.55rem,4vw,2rem);margin:0 0 1rem;text-align:center}
+  .tabs{display:flex;justify-content:center;gap:10px;padding:18px 16px 0;background:var(--green-deep);border-bottom:1px solid var(--gold)}
+  .tab-button{font:700 1rem Georgia,"Times New Roman",serif;color:#f0dfb8;background:transparent;border:1px solid transparent;border-bottom:0;border-radius:4px 4px 0 0;padding:12px 22px;cursor:pointer}
+  .tab-button[aria-selected="true"]{background:var(--paper);color:var(--red);border-color:var(--gold)}
+  .tab-button:focus-visible{outline:3px solid #e8c978;outline-offset:3px}
+  .tab-panel[hidden]{display:none}
+  .cookie-intro{text-align:center;max-width:660px;margin:0 auto 24px;font-size:1.08rem}
+  .cookie-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}
+  .cookie-card{background:linear-gradient(145deg,#fffaf0,#efe3c9);border:1px solid var(--gold);padding:19px;text-align:center;box-shadow:inset 0 0 0 4px rgba(200,161,90,.1)}
+  .cookie-photo{width:78%;margin:0 auto 10px;padding:5px 5px 3px;background:#fffdf7;border:1px solid #d9c39a;box-shadow:0 3px 8px rgba(40,30,15,.18);transform:rotate(-1.2deg)}
+  .cookie-card:nth-child(even) .cookie-photo{transform:rotate(1.2deg)}
+  .cookie-photo img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;filter:sepia(.18) saturate(.95)}
+  .cookie-photo figcaption{margin-top:4px;font-size:.68rem;color:#7a6a52;font-style:italic}
+  .cookie-photo a{color:inherit}
+  .cookie-card h3{margin:5px 0;color:var(--green);font-size:1.2rem}
+  .cookie-card p{margin:8px 0 0;line-height:1.45}
+  .bake-label{display:inline-block;margin-top:8px;padding:4px 9px;border:1px solid var(--gold);color:var(--red);font-size:.77rem;letter-spacing:.08em;text-transform:uppercase}
+  .more-cookies{margin-top:22px;text-align:center}
+  .more-cookies h3{margin:0 0 10px;color:var(--green)}
+  .more-cookies ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+  .more-cookies li{padding:5px 12px;background:#fffaf0;border:1px dashed var(--gold);border-radius:999px;font-size:.92rem}
+  .share-board{margin-top:26px;padding:20px;background:#eee3ce;border-left:4px solid var(--red)}
+  .share-board h3{margin:0 0 8px;color:var(--green);font-size:1.35rem}
+  .share-board>p{margin:0 0 14px;line-height:1.5}
   .details{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;text-align:center}
-  .card{background:var(--cream);border-radius:14px;padding:18px;border:2px solid var(--gold)}
+  .card{background:linear-gradient(145deg,#fffaf0,#efe3c9);border-radius:3px;padding:18px;border:1px solid var(--gold);box-shadow:inset 0 0 0 4px rgba(200,161,90,.12)}
   .card .big{font-size:2.4rem}
   .card h3{margin:.3em 0;color:var(--green)}
   a{color:var(--red);font-weight:bold}
   ol.rules{counter-reset:r;list-style:none;padding:0}
-  ol.rules li{counter-increment:r;padding:14px 14px 14px 64px;position:relative;margin:10px 0;background:var(--cream);border-radius:12px;font-size:1.15rem}
-  ol.rules li::before{content:counter(r);position:absolute;left:14px;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;font-weight:bold}
+  ol.rules li{counter-increment:r;padding:14px 14px 14px 64px;position:relative;margin:10px 0;background:#f1e7d2;border-left:3px solid var(--gold);font-size:1.1rem}
+  ol.rules li::before{content:counter(r);position:absolute;left:14px;top:50%;transform:translateY(-50%);width:34px;height:34px;border-radius:50%;background:var(--green);color:#f8edcf;display:grid;place-items:center;font-weight:bold;border:1px solid var(--gold)}
   .prizes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
-  .prize{text-align:center;padding:22px;border-radius:16px;color:#fff}
-  .prize.a{background:var(--red)}.prize.b{background:var(--green)}
+  .prize{text-align:center;padding:22px;border:1px solid var(--gold);border-radius:3px;color:var(--paper)}
+  .prize.a{background:linear-gradient(145deg,#873128,var(--red))}.prize.b{background:linear-gradient(145deg,var(--green),var(--green-deep))}
   .prize .big{font-size:3rem;animation:dance .9s ease-in-out infinite alternate;display:inline-block}
   .prize h3{margin:.3em 0;font-size:1.5rem}
   .tent{text-align:center;font-style:italic;font-size:1.1rem}
-  iframe{width:100%;height:300px;border:0;border-radius:12px;margin-top:14px}
-  footer{text-align:center;padding:30px;background:var(--green);color:#fff}
+  footer{text-align:center;padding:30px 16px;background:var(--green-deep);color:#f0dfb8;border-top:1px solid var(--gold)}
+  footer .gm{width:76px;height:96px}
+  @media(max-width:520px){header{padding-top:42px}.gm{width:76px;height:96px}.dancers{gap:2px}main{padding:20px 12px}section{padding:22px 18px}}
   @media (prefers-reduced-motion:reduce){*{animation:none!important}}
 </style>
 </head>
@@ -52,16 +79,52 @@
 <svg width="0" height="0" style="position:absolute">
   <defs>
     <g id="gingerman">
-      <g class="arm-l"><rect x="2" y="30" width="26" height="14" rx="7" fill="#b8793b"/></g>
-      <g class="arm-r"><rect x="52" y="30" width="26" height="14" rx="7" fill="#b8793b"/></g>
-      <rect x="22" y="58" width="14" height="30" rx="7" fill="#b8793b" transform="rotate(8 29 58)"/>
-      <rect x="44" y="58" width="14" height="30" rx="7" fill="#b8793b" transform="rotate(-8 51 58)"/>
-      <ellipse cx="40" cy="48" rx="19" ry="22" fill="#b8793b"/>
-      <circle cx="40" cy="20" r="17" fill="#b8793b"/>
-      <circle cx="34" cy="17" r="2.2" fill="#3b2a1a"/><circle cx="46" cy="17" r="2.2" fill="#3b2a1a"/>
-      <path d="M33 24q7 7 14 0" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-      <circle cx="40" cy="42" r="2.5" fill="#c0283a"/><circle cx="40" cy="52" r="2.5" fill="#1f6b45"/><circle cx="40" cy="62" r="2.5" fill="#c0283a"/>
-      <path d="M26 33l14 6 14-6-3-6-11 5-11-5z" fill="#c0283a"/>
+      <g class="legs" fill="none" stroke="#9b5b35" stroke-width="18" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M41 76c-5 7-9 17-10 27"/>
+        <path d="M55 76c4 8 8 17 12 25"/>
+      </g>
+      <g class="arm-l" fill="none" stroke="#9b5b35" stroke-width="15" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M35 57c-10 4-18 2-27-5"/>
+      </g>
+      <g class="arm-r" fill="none" stroke="#9b5b35" stroke-width="15" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M61 57c10 2 18-1 26-9"/>
+      </g>
+      <path d="M34 52c6-4 19-4 27 1 5 6 5 17 2 27-7 6-24 7-33 1-3-9-3-21 4-29z" fill="#b8794b" stroke="#8f5534" stroke-width="2.5" stroke-linejoin="round"/>
+      <path d="M27 96c3 2 8 2 12 0m19 0c4 2 8 2 12 0" stroke="#fff1d9" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+      <ellipse cx="48" cy="29" rx="20" ry="21" fill="#c38a59" stroke="#9c6140" stroke-width="2.5"/>
+      <path d="M31 26c2-11 10-17 19-16 10 0 16 7 16 17-5-4-9-6-15-4-7-3-13-2-20 3z" fill="#c38a59"/>
+      <path d="M39 29q3-3 6 0m8 0q3-3 6 0" stroke="#593823" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <circle cx="41" cy="30" r="1.4" fill="#422a1d"/><circle cx="56" cy="30" r="1.4" fill="#422a1d"/>
+      <circle cx="35" cy="38" r="3.3" fill="#d98279" opacity=".8"/><circle cx="61" cy="38" r="3.3" fill="#d98279" opacity=".8"/>
+      <path d="M42 39c4 5 10 5 14 0" stroke="#fff6e8" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <circle cx="47" cy="67" r="2" fill="#a63735"/><circle cx="48" cy="76" r="2" fill="#a63735"/>
+      <path d="M40 56q4 3 8 0t8 0M15.5 50q-1 6-4 10M78.5 48.5q4.5 2.5 7 7" stroke="#fff1d9" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+      <g fill="#945738" opacity=".62">
+        <circle cx="32" cy="18" r="1.5"/><circle cx="55" cy="46" r="1.3"/><circle cx="37" cy="70" r="1.6"/>
+        <circle cx="58" cy="67" r="1.4"/><circle cx="44" cy="91" r="1.3"/><circle cx="70" cy="53" r="1.4"/>
+      </g>
+    </g>
+    <g id="santa-hat">
+      <path d="M31 19C35 7 46 1 57 4c9 2 15 10 17 20l-6-2c-6-5-16-7-37 0z" fill="#b83235" stroke="#8f332c" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M27 20c13-7 30-7 42-1l-1 7c-12-6-27-6-40 1z" fill="#fff1d9" stroke="#e8d9bf" stroke-width="1.5" stroke-linejoin="round"/>
+      <circle cx="74" cy="25" r="4.5" fill="#fff1d9" stroke="#e8d9bf" stroke-width="1.2"/>
+    </g>
+    <g id="costume-santa">
+      <use href="#santa-hat"/>
+      <path d="M36 52c7 4 17 4 25 0l-2 7c-7 4-15 4-21 0z" fill="#315c46" stroke="#fff1d9" stroke-width="1.5"/>
+      <path d="m51 57 9 2-4 19-8-3z" fill="#315c46" stroke="#fff1d9" stroke-width="1.3" stroke-linejoin="round"/>
+      <path d="m50 65 6 2m-7 4 6 2" stroke="#e5c889" stroke-width="1.4" stroke-linecap="round"/>
+    </g>
+    <g id="costume-bow-tie">
+      <use href="#santa-hat"/>
+      <path d="M46 54c-6-6-14-5-13 0 1 5 8 6 13 0zm4 0c6-6 14-5 13 0-1 5-8 6-13 0z" fill="#b83235" stroke="#8f332c" stroke-width="1.5" stroke-linejoin="round"/>
+      <circle cx="48" cy="54" r="3" fill="#e5c889"/>
+    </g>
+    <g id="costume-dress">
+      <use href="#santa-hat"/>
+      <path d="M37 53q11 4 22 0l8 34q-20 7-40 0z" fill="#b83235" stroke="#f7ead4" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="M28.5 82q19 6 37.3 0l1.2 5q-20 7-40 0z" fill="#fff1d9"/>
+      <circle cx="48" cy="64" r="2.4" fill="#fff1d9"/><circle cx="48" cy="73" r="2.4" fill="#fff1d9"/>
     </g>
   </defs>
 </svg>
@@ -69,20 +132,27 @@
 <header>
   <div class="small">🎄 Christmas Edition 🎄</div>
   <h1>The Great Christmas Cookie Bake Off</h1>
-  <p>Aprons on, ovens ready... <strong>bake!</strong></p>
+  <p>Welcome to the tent — aprons on, ovens warm, and star baker glory up for grabs!</p>
   <div class="dancers" id="dancers"></div>
 </header>
 
+<nav class="tabs" role="tablist" aria-label="Bake-off pages">
+  <button class="tab-button" id="tab-tent" type="button" role="tab" aria-selected="true" aria-controls="panel-tent" tabindex="0">The Bake Tent</button>
+  <button class="tab-button" id="tab-cookies" type="button" role="tab" aria-selected="false" aria-controls="panel-cookies" tabindex="-1">Cookie Ideas</button>
+</nav>
+
 <main>
+  <div class="tab-panel" id="panel-tent" role="tabpanel" aria-labelledby="tab-tent" tabindex="0">
   <section>
-    <h2>🍪 You're Invited!</h2>
-    <p class="tent">Join us in the tent for an evening of biscuits, banter and brilliant bakes — inspired by <em>The Great British Baking Show</em>.</p>
+    <h2>🍪 Welcome to the Bake Tent!</h2>
+    <p class="tent">Join us for an evening of biscuits, friendly judging and brilliant bakes. Bring a signature cookie, tackle the technical challenge, and save a showstopper for the judges!</p>
     <div class="details">
       <div class="card"><div class="big">🕠</div><h3>When</h3><p><strong>December 12</strong><br>Starting at <strong>5:30 PM</strong></p></div>
       <div class="card"><div class="big">📍</div><h3>Where</h3>
         <p><a href="https://www.google.com/maps/search/?api=1&query=914+W+800+N+Salt+Lake+City+UT+84116" target="_blank" rel="noopener">914 W 800 N<br>Salt Lake City, UT 84116</a></p></div>
+      <div class="card dress-code"><div class="big">🧣</div><h3>Dress Code</h3><p><strong>Festive Christmas wear</strong><br>Christmas PJs or cosy sweaters &mdash; snug, comfy vibes only!</p></div>
+      <div class="card"><div class="big">☕</div><h3>Snacks &amp; Drinks</h3><p><strong>Provided!</strong><br>Festive nibbles and warm drinks to keep you going between tastings.</p></div>
     </div>
-    <iframe title="Map" loading="lazy" src="https://www.google.com/maps?q=914+W+800+N+Salt+Lake+City+UT+84116&output=embed"></iframe>
   </section>
 
   <section>
@@ -102,6 +172,63 @@
     </div>
     <p class="tent">"Is it a soggy bottom? Only the judges (that's you) can say."</p>
   </section>
+  </div>
+
+  <div class="tab-panel" id="panel-cookies" role="tabpanel" aria-labelledby="tab-cookies" tabindex="0" hidden>
+    <section>
+      <h2>🍪 Baker's Cookie Gallery</h2>
+      <p class="cookie-intro">Need a little inspiration before the ovens go on? From iced sugar cookies to peanut butter criss-crosses and proper gingerbread men, here are some classics to get your oven mitts twitching.</p>
+      <div class="cookie-grid">
+        <article class="cookie-card">
+          <figure class="cookie-photo"><img src="images/iced-sugar-cookies.png" alt="Royal-iced sugar cookies shaped like Santas, lit Christmas trees, ugly sweaters, ornaments and gingerbread men" loading="lazy"></figure>
+          <h3>Iced Sugar Cookies</h3>
+          <span class="bake-label">Signature bake</span>
+          <p>Buttery cut-outs flooded in royal icing &mdash; Santas, twinkly trees, ugly sweaters and baubles.</p>
+        </article>
+        <article class="cookie-card">
+          <figure class="cookie-photo"><img src="images/chocolate-dipped-peanut-butter.png" alt="Fork-pressed peanut butter cookies half-dipped in chocolate with crushed candy cane and Christmas tree sprinkles" loading="lazy"></figure>
+          <h3>Chocolate-Dipped Peanut Butter Cookies</h3>
+          <span class="bake-label">Technical challenge</span>
+          <p>Classic fork criss-cross peanut butter cookies, half-dipped in chocolate and showered with crushed candy cane and festive sprinkles.</p>
+        </article>
+        <article class="cookie-card">
+          <figure class="cookie-photo"><img src="images/iced-gingerbread.png" alt="Gingerbread snowflakes, reindeer, trees and gingerbread men piped with white icing" loading="lazy"></figure>
+          <h3>Iced Gingerbread</h3>
+          <span class="bake-label">Showstopper</span>
+          <p>Treacle-dark gingerbread snowflakes, reindeer, trees and gingerbread men piped with snowy icing.</p>
+        </article>
+        <article class="cookie-card">
+          <figure class="cookie-photo"><img src="images/melted-snowman-cookies.png" alt="Melted snowman cookie with white icing, green scarf, carrot nose and a little black hat" loading="lazy"></figure>
+          <h3>Melted Snowman Cookies</h3>
+          <span class="bake-label">Signature bake</span>
+          <p>Buttery cookies with a puddle of white icing and a cheeky snowman peeking out in his green scarf.</p>
+        </article>
+        <article class="cookie-card">
+          <figure class="cookie-photo"><img src="images/chocolate-crinkles.png" alt="Chocolate crinkle cookies dusted in icing sugar" loading="lazy"></figure>
+          <h3>Snowy Chocolate Crinkles</h3>
+          <span class="bake-label">Showstopper</span>
+          <p>Fudgy cocoa cookies that crack open under a snowfall of icing sugar.</p>
+        </article>
+        <article class="cookie-card">
+          <figure class="cookie-photo"><img src="images/candy-cane-kiss-cookies.png" alt="Sprinkle-covered sugar cookies with a candy-cane striped kiss pressed in the middle" loading="lazy"></figure>
+          <h3>Candy Cane Kiss Cookies</h3>
+          <span class="bake-label">Signature bake</span>
+          <p>Soft sugar cookies rolled in festive sprinkles with a candy-cane striped kiss pressed in the centre.</p>
+        </article>
+      </div>
+      <div class="more-cookies">
+        <h3>🎄 More cookies to try</h3>
+        <ul>
+          <li>Snickerdoodles</li><li>Linzer jam hearts</li><li>Snowball cookies</li><li>Butter spritz</li><li>Millionaire&rsquo;s shortbread</li><li>Gingernut biscuits</li><li>Florentines</li><li>Lebkuchen</li><li>Cranberry pistachio biscotti</li><li>Melting snowmen</li><li>Peppermint pinwheels</li><li>Jammie thumbprints</li>
+        </ul>
+      </div>
+      <div class="share-board">
+        <h3>🎁 Bake a little extra, share a little joy</h3>
+        <p>Set aside a few extras for a mix-and-match tasting plate at the tent, or wrap a small treat for a neighbour.</p>
+        <p class="tent">Bring a few extras for swapping, and label common allergens so everyone can enjoy the spread.</p>
+      </div>
+    </section>
+  </div>
 </main>
 
 <footer>
@@ -110,9 +237,34 @@
 </footer>
 
 <script>
-  const man = '<svg class="gm" viewBox="0 0 80 90"><use href="#gingerman"/></svg>';
-  document.getElementById('dancers').innerHTML = man.repeat(9);
-  document.getElementById('dancers2').innerHTML = man.repeat(7);
+  const costumes = ['#costume-santa', '#costume-bow-tie', '#costume-dress'];
+  const makeMan = index => `<svg class="gm" viewBox="0 0 100 116" aria-hidden="true"><use href="#gingerman"/><use href="${costumes[index % costumes.length]}"/></svg>`;
+  document.getElementById('dancers').innerHTML = Array.from({length: 6}, (_, i) => makeMan(i)).join('');
+  document.getElementById('dancers2').innerHTML = Array.from({length: 4}, (_, i) => makeMan(i + 1)).join('');
+  const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+  const selectTab = (tab, focus = false) => {
+    tabs.forEach(item => {
+      const selected = item === tab;
+      item.setAttribute('aria-selected', String(selected));
+      item.tabIndex = selected ? 0 : -1;
+      document.getElementById(item.getAttribute('aria-controls')).hidden = !selected;
+    });
+    if (focus) tab.focus();
+  };
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => selectTab(tab));
+    tab.addEventListener('keydown', event => {
+      let nextIndex;
+      if (event.key === 'ArrowRight') nextIndex = (index + 1) % tabs.length;
+      else if (event.key === 'ArrowLeft') nextIndex = (index - 1 + tabs.length) % tabs.length;
+      else if (event.key === 'Home') nextIndex = 0;
+      else if (event.key === 'End') nextIndex = tabs.length - 1;
+      if (nextIndex !== undefined) {
+        event.preventDefault();
+        selectTab(tabs[nextIndex], true);
+      }
+    });
+  });
   const snow = document.getElementById('snow');
   for (let i = 0; i < 40; i++) {
     const f = document.createElement('div');
